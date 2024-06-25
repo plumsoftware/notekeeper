@@ -47,7 +47,8 @@ val Typography = Typography(
 
     bodyMedium = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontFamily = bodyFontFamily
+        fontFamily = bodyFontFamily,
+        fontSize = ThemeAddons.TypeSize.bodyMedium
     ),
 
     bodySmall = baseline.bodySmall.copy(fontFamily = bodyFontFamily),

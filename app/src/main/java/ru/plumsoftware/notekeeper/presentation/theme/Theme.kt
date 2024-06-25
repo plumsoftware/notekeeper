@@ -516,17 +516,25 @@ val LocalExtendedColors = staticCompositionLocalOf {
 @Composable
 fun ExtendedTheme(
     content: @Composable () -> Unit,
-    shapes: Shapes = MaterialTheme.shapes,
-    typography: Typography = MaterialTheme.typography,
-    colorScheme: ColorScheme = MaterialTheme.colorScheme,
     darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean = true,
 ) {
+
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+
+        darkTheme -> darkScheme
+        else -> lightScheme
+    }
 
     val extendedColors = if (darkTheme) extendedDark else extendedLight
     CompositionLocalProvider(LocalExtendedColors provides extendedColors) {
         MaterialTheme(
             content = content,
-            typography = typography,
+            typography = Typography,
             shapes = shapes,
             colorScheme = colorScheme
         )
@@ -567,6 +575,7 @@ fun NotekeeperTheme(
     MaterialTheme(
         typography = Typography,
         content = content,
-        colorScheme = colorScheme
+        colorScheme = colorScheme,
+        shapes = shapes
     )
 }

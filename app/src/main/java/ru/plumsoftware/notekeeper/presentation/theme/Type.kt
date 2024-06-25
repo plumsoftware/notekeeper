@@ -39,19 +39,26 @@ val Typography = Typography(
     headlineLarge = baseline.headlineLarge.copy(fontFamily = displayFontFamily),
     headlineMedium = baseline.headlineMedium.copy(fontFamily = displayFontFamily),
     headlineSmall = baseline.headlineSmall.copy(fontFamily = displayFontFamily),
-    titleLarge = baseline.titleLarge.copy(fontFamily = displayFontFamily),
+
+    titleLarge = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontFamily = bodyFontFamily,
+        fontSize = ThemeAddons.TypeSize.titleLarge
+    ),
     titleMedium = baseline.titleMedium.copy(fontFamily = displayFontFamily),
     titleSmall = baseline.titleSmall.copy(fontFamily = displayFontFamily),
 
     bodyLarge = baseline.bodyLarge.copy(fontFamily = bodyFontFamily),
-
     bodyMedium = TextStyle(
         fontWeight = FontWeight.Normal,
         fontFamily = bodyFontFamily,
         fontSize = ThemeAddons.TypeSize.bodyMedium
     ),
-
-    bodySmall = baseline.bodySmall.copy(fontFamily = bodyFontFamily),
+    bodySmall = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontFamily = bodyFontFamily,
+        fontSize = ThemeAddons.TypeSize.bodySmall
+    ),
     labelLarge = baseline.labelLarge.copy(fontFamily = bodyFontFamily),
     labelMedium = baseline.labelMedium.copy(fontFamily = bodyFontFamily),
     labelSmall = baseline.labelSmall.copy(fontFamily = bodyFontFamily),

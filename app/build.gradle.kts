@@ -81,4 +81,7 @@ dependencies {
     implementation(libs.androidx.room)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
+
+//    Fonts
+    implementation(libs.androidx.ui.text.google.fonts)
 }

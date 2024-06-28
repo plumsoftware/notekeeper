@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.presentation.theme
+package ru.plumsoftware.notekeeper.presentation.theme.addon
 
 import androidx.compose.ui.unit.dp
 

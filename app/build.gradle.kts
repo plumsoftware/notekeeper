@@ -84,4 +84,7 @@ dependencies {
 
 //    Fonts
     implementation(libs.androidx.ui.text.google.fonts)
+
+//    Layers
+    implementation(project(":data"))
 }

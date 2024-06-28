@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import ru.plumsoftware.notekeeper.R
+import ru.plumsoftware.notekeeper.presentation.theme.addon.ThemeAddons
 
 val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",

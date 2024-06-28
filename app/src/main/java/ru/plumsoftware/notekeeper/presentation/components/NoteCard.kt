@@ -15,20 +15,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import ru.plumsoftware.notekeeper.presentation.theme.ColorFamily
+import ru.plumsoftware.data.model.Note
 import ru.plumsoftware.notekeeper.presentation.theme.ExtendedTheme
-import ru.plumsoftware.notekeeper.presentation.theme.ThemeAddons
-import ru.plumsoftware.notekeeper.presentation.theme.UIAddons
+import ru.plumsoftware.notekeeper.presentation.theme.addon.ThemeAddons
+import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
+import ru.plumsoftware.notekeeper.presentation.theme.extended.extendedThemeMapping
+import ru.plumsoftware.notekeeper.utilities.dateFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteCard(
     onClick: () -> Unit,
-    noteTitle: String,
-    noteContent: String,
-    noteDate: String,
-    cardTheme: ColorFamily
+    note: Note,
 ) {
+    val colorFamily = extendedThemeMapping(id = note.themeId)
     ExtendedTheme {
         Card(
             onClick = onClick,
@@ -37,8 +37,8 @@ fun NoteCard(
                 .wrapContentHeight(),
             shape = MaterialTheme.shapes.medium,
             colors = CardDefaults.cardColors(
-                containerColor = cardTheme.colorContainer,
-                contentColor = cardTheme.onColorContainer
+                containerColor = colorFamily.colorContainer,
+                contentColor = colorFamily.onColorContainer
             )
         ) {
             Column(
@@ -53,26 +53,26 @@ fun NoteCard(
                     ),
             ) {
                 Text(
-                    text = noteTitle,
+                    text = note.name,
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentHeight(),
-                    style = MaterialTheme.typography.titleLarge.copy(color = cardTheme.onColorContainer)
+                    style = MaterialTheme.typography.titleLarge.copy(color = colorFamily.onColorContainer)
                 )
                 Text(
-                    text = noteContent,
+                    text = note.content ?: "",
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentHeight(),
-                    style = MaterialTheme.typography.bodyMedium.copy(color = cardTheme.onColorContainer)
+                    style = MaterialTheme.typography.bodyMedium.copy(color = colorFamily.onColorContainer)
                 )
                 Text(
-                    text = noteDate,
+                    text = dateFormatter(date = note.createDate, pattern = "hh:mm dd.MM.yyyy"),
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentHeight(),
                     style = MaterialTheme.typography.bodySmall.copy(
-                        color = cardTheme.onColorContainer.copy(
+                        color = colorFamily.onColorContainer.copy(
                             alpha = ThemeAddons.Color.noteDateAlpha
                         )
                     ),
@@ -88,11 +88,15 @@ fun NoteCard(
 private fun note_preview() {
     ExtendedTheme {
         NoteCard(
-            noteContent = "Note content",
-            noteDate = "25.06.2024",
-            noteTitle = "Note title",
-            onClick = {},
-            cardTheme = ExtendedTheme.colors.blueTheme
+            note = Note(
+                id = 0,
+                name = "Title",
+                content = "Desc",
+                themeId = 3,
+                createDate = System.currentTimeMillis(),
+                lastUpdateDate = System.currentTimeMillis()
+            ),
+            onClick = {}
         )
     }
 }

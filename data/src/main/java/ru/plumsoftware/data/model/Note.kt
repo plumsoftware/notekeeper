@@ -5,5 +5,6 @@ data class Note(
     val content: String?,
     val color: Int,
     val imagesResIds: Array<Int> = emptyArray(),
-    val videosResIds: Array<Int> = emptyArray()
+    val videosResIds: Array<Int> = emptyArray(),
+    val noteTasks: Array<NoteTask> = emptyArray()
 )

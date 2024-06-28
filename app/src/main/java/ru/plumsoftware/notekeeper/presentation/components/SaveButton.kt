@@ -21,7 +21,8 @@ fun SaveButton(onClick: () -> Unit, colorFamily: ColorFamily) {
             containerColor = Color.White,
             contentColor = colorFamily.onColorContainer
         ),
-        contentPadding = UIAddons.Padding.buttonPadding
+        contentPadding = UIAddons.Padding.buttonPadding,
+        shape = MaterialTheme.shapes.medium
     ) {
         Text(
             text = stringResource(id = R.string.save),

@@ -149,7 +149,11 @@ fun NotekeeperTheme(
 
     MaterialTheme(
         typography = Typography,
-        content = content,
+        content = {
+            ExtendedTheme {
+                content()
+            }
+        },
         colorScheme = colorScheme,
         shapes = shapes
     )

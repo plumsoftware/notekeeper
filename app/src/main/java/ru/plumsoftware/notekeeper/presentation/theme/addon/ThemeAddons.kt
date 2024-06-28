@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.sp
 object ThemeAddons {
     object Shapes {
         val mediumCornerShape = 12.dp
+        val largeCornerShape = 16.dp
     }
 
     object Color {

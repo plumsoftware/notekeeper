@@ -56,10 +56,11 @@ val Typography = Typography(
         fontSize = ThemeAddons.TypeSize.bodyMedium
     ),
     bodySmall = TextStyle(
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Bold,
         fontFamily = bodyFontFamily,
         fontSize = ThemeAddons.TypeSize.bodySmall
     ),
+
     labelLarge = baseline.labelLarge.copy(fontFamily = bodyFontFamily),
     labelMedium = baseline.labelMedium.copy(fontFamily = bodyFontFamily),
     labelSmall = baseline.labelSmall.copy(fontFamily = bodyFontFamily),

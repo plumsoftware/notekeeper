@@ -13,5 +13,6 @@ object UIAddons {
         val mediumVerPadding = 10.dp
 
         val iconButtonPadding = PaddingValues(horizontal = mediumHorPadding, vertical = mediumVerPadding)
+        val buttonPadding = PaddingValues(horizontal = mediumHorPadding, vertical = mediumVerPadding)
     }
 }

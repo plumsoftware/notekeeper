@@ -10,6 +10,7 @@ import ru.plumsoftware.notekeeper.presentation.theme.extended.ColorFamily
 object UIAddons {
     object Space {
         val mediumSpace = 12.dp
+        val largeSpace = 18.dp
     }
 
     object Padding {
@@ -22,6 +23,8 @@ object UIAddons {
             PaddingValues(horizontal = mediumHorPadding, vertical = mediumVerPadding)
         val cardColorPanelPadding =
             PaddingValues(horizontal = mediumHorPadding, vertical = mediumVerPadding)
+        val searchWithFilterFieldPadding =
+            PaddingValues(vertical = mediumVerPadding)
     }
 
     object NoteColors {
@@ -41,5 +44,9 @@ object UIAddons {
                 ExtendedTheme.colors.cyanTheme,
             )
         }
+    }
+
+    object Alpha {
+        val searchWithFilterFieldAlpha = 0.7f
     }
 }

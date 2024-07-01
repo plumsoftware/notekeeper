@@ -49,7 +49,11 @@ val Typography = Typography(
     titleMedium = baseline.titleMedium.copy(fontFamily = displayFontFamily),
     titleSmall = baseline.titleSmall.copy(fontFamily = displayFontFamily),
 
-    bodyLarge = baseline.bodyLarge.copy(fontFamily = bodyFontFamily),
+    bodyLarge = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontFamily = bodyFontFamily,
+        fontSize = ThemeAddons.TypeSize.bodyLarge
+    ),
     bodyMedium = TextStyle(
         fontWeight = FontWeight.Normal,
         fontFamily = bodyFontFamily,

@@ -19,4 +19,11 @@
     <string name="add">Добавить</string>
     <string name="create_new">Создать новую</string>
     <string name="save">Сохранить</string>
+
+    <string name="_3_days">3 дня</string>
+    <string name="_7_days">7 дней</string>
+    <string name="_14_days">14 дней</string>
+    <string name="_1_month">1 месяц</string>
+    <string name="favorites">Избранное</string>
+    <string name="bug_report">Отчёт об ошибке</string>
 </resources>

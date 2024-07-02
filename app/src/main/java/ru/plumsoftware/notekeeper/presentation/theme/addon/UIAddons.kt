@@ -48,5 +48,10 @@ object UIAddons {
 
     object Alpha {
         val searchWithFilterFieldAlpha = 0.7f
+        val dividerOnDrawerAlpha = 0.2f
+    }
+
+    object Size {
+        val drawerWidth = 300.dp
     }
 }

@@ -31,4 +31,9 @@
     <string name="search_field_label">Поиск</string>
 
     <string name="drawer_icon">Кнопка открытия бокового меню</string>
+
+    <string name="back_click_note_screen_top_app_bar">Кнопка назад</string>
+    <string name="favorite_note_screen_top_app_bar">Кнопка добавления в избранное</string>
+    <string name="delete_note_screen_top_app_bar">Кнопка удаления заметки</string>
+    <string name="notify_screen_top_app_bar">Кнопка уведомления о заметке</string>
 </resources>

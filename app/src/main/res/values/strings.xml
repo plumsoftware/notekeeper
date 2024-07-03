@@ -26,4 +26,7 @@
     <string name="_1_month">1 месяц</string>
     <string name="favorites">Избранное</string>
     <string name="bug_report">Отчёт об ошибке</string>
+
+    <string name="close_search_with_filter_field">Закрыть</string>
+    <string name="search_field_label">Поиск</string>
 </resources>

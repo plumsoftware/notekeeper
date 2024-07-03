@@ -27,20 +27,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import ru.plumsoftware.notekeeper.R
+import ru.plumsoftware.notekeeper.presentation.NotekeeperIconPack
 import ru.plumsoftware.notekeeper.presentation.TestTags
+import ru.plumsoftware.notekeeper.presentation.notekeepericonpack.X
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 
 @Composable
-fun SearchWithFilterField(text: String, onSearchClick: () -> Unit) {
+fun SearchWithFilterField(text: String, onSearchClick: (String) -> Unit) {
     var showTextField by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
+    var query by remember { mutableStateOf("") }
 
     LaunchedEffect(showTextField) {
         if (showTextField) {
             focusRequester.requestFocus()
+        } else {
+            focusManager.clearFocus()
         }
     }
 
@@ -63,17 +72,40 @@ fun SearchWithFilterField(text: String, onSearchClick: () -> Unit) {
             OutlinedTextField(
                 value = text,
                 onValueChange = {
-
+                    query = it
                 },
-                label = { Text("Поиск") },
+                label = {
+                    Text(
+                        text = stringResource(id = R.string.search_field_label),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                },
                 modifier = Modifier
                     .weight(1f)
                     .focusRequester(focusRequester)
                     .testTag(TestTags.searchFieldOnMainScreen),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                trailingIcon = {
+                    IconButton(
+                        onClick = {
+                            showTextField = !showTextField
+                        },
+                        modifier = Modifier
+                            .testTag(TestTags.closeSearchFieldOnMainScreen),
+                    ) {
+                        Icon(
+                            imageVector = NotekeeperIconPack.X,
+                            contentDescription = stringResource(
+                                id = R.string.close_search_with_filter_field
+                            )
+                        )
+                    }
+                }
             )
             IconButton(
-                onClick = onSearchClick
+                onClick = {
+                    onSearchClick(query)
+                }
             ) {
                 Icon(imageVector = Icons.Rounded.Search, contentDescription = "")
             }
@@ -97,7 +129,9 @@ fun SearchWithFilterField(text: String, onSearchClick: () -> Unit) {
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = MaterialTheme.typography.bodyLarge.color.copy(alpha = UIAddons.Alpha.searchWithFilterFieldAlpha)
                 ),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
+                    .testTag(TestTags.searchFieldOnMainScreenText)
             )
             IconButton(
                 onClick = {

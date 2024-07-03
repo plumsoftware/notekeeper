@@ -29,4 +29,6 @@
 
     <string name="close_search_with_filter_field">Закрыть</string>
     <string name="search_field_label">Поиск</string>
+
+    <string name="drawer_icon">Кнопка открытия бокового меню</string>
 </resources>

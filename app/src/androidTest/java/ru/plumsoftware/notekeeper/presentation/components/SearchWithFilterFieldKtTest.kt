@@ -2,7 +2,6 @@ package ru.plumsoftware.notekeeper.presentation.components
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.test.assertIsFocused
-import androidx.compose.ui.test.assertIsNotFocused
 import androidx.compose.ui.test.assertWidthIsAtLeast
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasTestTag
@@ -15,6 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.plumsoftware.notekeeper.presentation.TestTags
+import ru.plumsoftware.notekeeper.presentation.components.mainpage.SearchWithFilterField
 
 @RunWith(AndroidJUnit4::class)
 class SearchWithFilterFieldKtTest {

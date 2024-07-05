@@ -1,7 +1,6 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.mainpage
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.width

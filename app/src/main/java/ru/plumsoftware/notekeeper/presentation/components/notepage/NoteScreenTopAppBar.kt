@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.notepage
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

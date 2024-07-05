@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.notepage
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Arrangement

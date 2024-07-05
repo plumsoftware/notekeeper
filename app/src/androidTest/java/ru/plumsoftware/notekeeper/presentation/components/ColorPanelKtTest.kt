@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performClick
 import org.junit.Rule
 import org.junit.Test
 import ru.plumsoftware.notekeeper.presentation.TestTags
+import ru.plumsoftware.notekeeper.presentation.components.notepage.ColorPanel
 import ru.plumsoftware.notekeeper.presentation.theme.ExtendedTheme
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 

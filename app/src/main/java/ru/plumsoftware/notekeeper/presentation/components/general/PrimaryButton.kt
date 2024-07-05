@@ -1,16 +1,14 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.general
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -65,7 +63,7 @@ fun PrimaryButton(
 
 @Composable
 @Preview(showSystemUi = true, showBackground = true)
-fun preview() {
+fun PrimaryButtonPreview() {
     ExtendedTheme {
         PrimaryButton(colorFamily = ExtendedTheme.colors.pinkTheme) {
 

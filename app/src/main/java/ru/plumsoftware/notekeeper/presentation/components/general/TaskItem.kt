@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.general
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement

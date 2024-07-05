@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.general
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -85,7 +85,7 @@ fun NoteCard(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun note_preview() {
+private fun NotePreview() {
     ExtendedTheme {
         NoteCard(
             note = Note(

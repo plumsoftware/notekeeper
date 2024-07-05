@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.presentation.components
+package ru.plumsoftware.notekeeper.presentation.components.mainpage
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween

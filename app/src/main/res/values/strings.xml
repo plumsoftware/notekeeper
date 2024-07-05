@@ -36,4 +36,6 @@
     <string name="favorite_note_screen_top_app_bar">Кнопка добавления в избранное</string>
     <string name="delete_note_screen_top_app_bar">Кнопка удаления заметки</string>
     <string name="notify_screen_top_app_bar">Кнопка уведомления о заметке</string>
+
+    <string name="placeholder_task_text">Элемент</string>
 </resources>

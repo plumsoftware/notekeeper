@@ -14,6 +14,9 @@ object UIAddons {
     }
 
     object Padding {
+        val extraSmallHorPadding = 4.dp
+        val extraSmallVerPadding = 4.dp
+
         val mediumHorPadding = 10.dp
         val mediumVerPadding = 10.dp
 
@@ -26,6 +29,7 @@ object UIAddons {
         val searchWithFilterFieldPadding =
             PaddingValues(vertical = mediumVerPadding)
         val mainScreenTopAppBarPadding = PaddingValues(vertical = mediumVerPadding)
+        val noteScreenTaskItemPadding = PaddingValues(vertical = extraSmallVerPadding, horizontal = extraSmallHorPadding)
     }
 
     object NoteColors {
@@ -50,6 +54,9 @@ object UIAddons {
     object Alpha {
         val searchWithFilterFieldAlpha = 0.7f
         val dividerOnDrawerAlpha = 0.2f
+
+        val checkBoxAlpha = 0.6f
+        val placeHolderAlpha = 0.7f
     }
 
     object Size {

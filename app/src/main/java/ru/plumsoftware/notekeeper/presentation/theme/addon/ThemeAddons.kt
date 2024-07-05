@@ -14,6 +14,8 @@ object ThemeAddons {
     }
 
     object TypeSize {
+        val labelSmall = 12.sp
+
         val bodySmall = 12.sp
         val bodyMedium = 14.sp
         val bodyLarge = 14.sp

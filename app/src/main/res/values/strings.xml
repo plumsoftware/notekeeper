@@ -40,4 +40,10 @@
     <string name="placeholder_task_text">Элемент</string>
 
     <string name="back_button_content_description">Кнопка Назад</string>
+
+    <string name="settings_theme_text">Тема</string>
+    <string name="settings_theme_text_light">Светлая</string>
+    <string name="settings_theme_text_dark">Тёмная</string>
+    <string name="settings_theme_text_default">Как в системе</string>
+    <string name="drop_down_menu_icon_content_description">Выподающий список</string>
 </resources>

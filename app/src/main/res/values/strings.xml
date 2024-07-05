@@ -38,4 +38,6 @@
     <string name="notify_screen_top_app_bar">Кнопка уведомления о заметке</string>
 
     <string name="placeholder_task_text">Элемент</string>
+
+    <string name="back_button_content_description">Кнопка Назад</string>
 </resources>

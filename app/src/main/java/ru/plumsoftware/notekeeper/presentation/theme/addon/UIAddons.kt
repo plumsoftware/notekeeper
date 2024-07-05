@@ -29,7 +29,11 @@ object UIAddons {
         val searchWithFilterFieldPadding =
             PaddingValues(vertical = mediumVerPadding)
         val mainScreenTopAppBarPadding = PaddingValues(vertical = mediumVerPadding)
-        val noteScreenTaskItemPadding = PaddingValues(vertical = extraSmallVerPadding, horizontal = extraSmallHorPadding)
+        val noteScreenTaskItemPadding =
+            PaddingValues(vertical = extraSmallVerPadding, horizontal = extraSmallHorPadding)
+
+        val topAppBarPadding =
+            PaddingValues(vertical = extraSmallVerPadding)
     }
 
     object NoteColors {

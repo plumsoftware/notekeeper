@@ -46,4 +46,5 @@
     <string name="settings_theme_text_dark">Тёмная</string>
     <string name="settings_theme_text_default">Как в системе</string>
     <string name="drop_down_menu_icon_content_description">Выподающий список</string>
+    <string name="settings_title">Настройки</string>
 </resources>

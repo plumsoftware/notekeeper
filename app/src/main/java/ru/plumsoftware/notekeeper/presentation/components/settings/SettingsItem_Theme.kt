@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
@@ -37,7 +38,10 @@ import ru.plumsoftware.notekeeper.presentation.theme.NotekeeperTheme
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 
 @Composable
-fun SettingsItem_Theme(isDarkTheme: Boolean? = isSystemInDarkTheme()) {
+fun SettingsItem_Theme(
+    isDarkTheme: Boolean? = isSystemInDarkTheme(),
+    onThemeChanged: (Boolean?) -> Unit
+) {
     var expanded: Boolean by remember { mutableStateOf(false) }
     val rotation = animateFloatAsState(
         targetValue = if (expanded) 180f else 0f,
@@ -67,6 +71,7 @@ fun SettingsItem_Theme(isDarkTheme: Boolean? = isSystemInDarkTheme()) {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .padding(horizontal = UIAddons.Padding.mediumHorPadding)
     ) {
         Text(
             text = stringResource(id = R.string.settings_theme_text),
@@ -111,6 +116,7 @@ fun SettingsItem_Theme(isDarkTheme: Boolean? = isSystemInDarkTheme()) {
                     onClick = {
                         expanded = false
                         selectedText = strings[0]
+                        onThemeChanged(false)
                     }
                 )
                 DropdownMenuItem(
@@ -124,6 +130,7 @@ fun SettingsItem_Theme(isDarkTheme: Boolean? = isSystemInDarkTheme()) {
                     onClick = {
                         expanded = false
                         selectedText = strings[1]
+                        onThemeChanged(true)
                     }
                 )
                 DropdownMenuItem(
@@ -136,6 +143,7 @@ fun SettingsItem_Theme(isDarkTheme: Boolean? = isSystemInDarkTheme()) {
                     onClick = {
                         expanded = false
                         selectedText = strings[2]
+                        onThemeChanged(null)
                     }
                 )
             }
@@ -149,7 +157,7 @@ fun SettingsItem_Theme(isDarkTheme: Boolean? = isSystemInDarkTheme()) {
 private fun SettingsItem_ThemePreview() {
     NotekeeperTheme {
         Scaffold {
-            SettingsItem_Theme(isDarkTheme = isSystemInDarkTheme())
+            SettingsItem_Theme(isDarkTheme = isSystemInDarkTheme(), {})
         }
     }
 }

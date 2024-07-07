@@ -12,4 +12,10 @@ object TestTags {
         const val dropDownMenuItem2_Theme = "dropDownMenuItem2_Theme"
         const val dropDownMenuSelectedText_Theme = "dropDownMenuSelectedText_Theme"
     }
+
+    object MainScreen {
+        const val mainScreenDrawerBackBox = "mainScreenDrawerBackBox"
+        const val openLeftDrawerIconButton = "openLeftDrawerIconButton"
+        const val mainScreenDrawer = "mainScreenDrawer"
+    }
 }

@@ -25,7 +25,7 @@ class SettingsItem_ThemeKtTest {
             NotekeeperTheme {
                 ExtendedTheme {
                     Scaffold {
-                        SettingsItem_Theme(isDarkTheme = false)
+                        SettingsItem_Theme(isDarkTheme = false, {})
                     }
                 }
             }

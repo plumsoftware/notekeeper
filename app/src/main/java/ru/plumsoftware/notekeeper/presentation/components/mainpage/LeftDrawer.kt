@@ -17,12 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import ru.plumsoftware.notekeeper.data.model.DrawerAction
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 import ru.plumsoftware.notekeeper.data.model.DrawerItem
 import ru.plumsoftware.notekeeper.data.model.list
+import ru.plumsoftware.notekeeper.presentation.TestTags
 
 @Composable
 fun LeftDrawer(list: List<DrawerItem>, onClick: (DrawerAction) -> Unit) {
@@ -37,6 +39,7 @@ fun LeftDrawer(list: List<DrawerItem>, onClick: (DrawerAction) -> Unit) {
         modifier = Modifier
             .fillMaxHeight()
             .width(UIAddons.Size.drawerWidth)
+            .testTag(TestTags.MainScreen.mainScreenDrawer)
     ) {
         itemsIndexed(list) { index, item ->
             if (index == list.size - 1) {

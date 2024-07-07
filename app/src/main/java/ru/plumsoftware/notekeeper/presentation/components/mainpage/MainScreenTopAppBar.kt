@@ -12,10 +12,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import ru.plumsoftware.notekeeper.R
 import ru.plumsoftware.notekeeper.presentation.NotekeeperIconPack
+import ru.plumsoftware.notekeeper.presentation.TestTags
 import ru.plumsoftware.notekeeper.presentation.notekeepericonpack.`Gear-wide`
 import ru.plumsoftware.notekeeper.presentation.notekeepericonpack.MenuIcon
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
@@ -31,7 +33,9 @@ fun MainScreenTopAppBar(onDrawerClick: () -> Unit, onSettingsClick: () -> Unit) 
             .padding(UIAddons.Padding.mainScreenTopAppBarPadding)
     ) {
         IconButton(
-            onClick = onDrawerClick
+            onClick = onDrawerClick,
+            modifier = Modifier
+                .testTag(TestTags.MainScreen.openLeftDrawerIconButton)
         ) {
             Icon(
                 imageVector = NotekeeperIconPack.MenuIcon,

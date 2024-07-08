@@ -70,7 +70,7 @@ fun SearchWithFilterField(text: String, onSearchClick: (String) -> Unit) {
                 .padding(UIAddons.Padding.searchWithFilterFieldPadding)
         ) {
             OutlinedTextField(
-                value = text,
+                value = query,
                 onValueChange = {
                     query = it
                 },

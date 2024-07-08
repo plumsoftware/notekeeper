@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,11 +27,13 @@ import ru.plumsoftware.notekeeper.presentation.TestTags
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.LeftDrawer
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.MainScreenTopAppBar
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.SearchWithFilterField
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.Intent
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 
 @Composable
-fun MainScreen() {
+fun MainScreen(mainViewModel: MainViewModel) {
     var drawerOpen by remember { mutableStateOf(false) }
+    val state = mainViewModel.state.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -45,7 +48,12 @@ fun MainScreen() {
                     onDrawerClick = { drawerOpen = true },
                     onSettingsClick = {}
                 )
-                SearchWithFilterField(text = "Привет", onSearchClick = {})
+                SearchWithFilterField(
+                    text = state.drawerAction.toString(),
+                    onSearchClick = {
+                        mainViewModel.onIntent(Intent.SearchClick(value = it))
+                    }
+                )
             }
         }
     ) { scaffoldPadding ->

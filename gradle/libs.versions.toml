@@ -12,6 +12,7 @@ composeBom = "2023.08.00"
 nav_version = "2.7.7"
 koin-core = "3.6.0-wasm-alpha2"
 koin_android = "3.6.0-wasm-alpha2"
+koin = "3.6.0-wasm-alpha2"
 
 room = "2.6.1"
 
@@ -19,6 +20,10 @@ ksp = "2.0.0-1.0.21"
 uiTextGoogleFonts = "1.6.8"
 appcompat = "1.7.0"
 material = "1.12.0"
+
+testng = "6.9.6"
+
+uiTestJunit4Android = "1.6.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,8 +46,15 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin_android" }
 androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+testng = { group = "org.testng", name = "testng", version.ref = "testng" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
+koin-android-test = { module = "io.insert-koin:koin-android-test", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4Android" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

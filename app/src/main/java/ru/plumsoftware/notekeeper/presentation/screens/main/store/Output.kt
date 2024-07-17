@@ -1,6 +1,6 @@
 package ru.plumsoftware.notekeeper.presentation.screens.main.store
 
-import ru.plumsoftware.data.model.Note
+import ru.plumsoftware.data.model.database.note.Note
 
 sealed class Output {
     data object AddNewNote : Output()

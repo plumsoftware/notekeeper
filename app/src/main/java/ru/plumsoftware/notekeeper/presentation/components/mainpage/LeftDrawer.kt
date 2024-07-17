@@ -20,10 +20,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import ru.plumsoftware.notekeeper.data.model.DrawerAction
+import ru.plumsoftware.notekeeper.model.DrawerAction
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
-import ru.plumsoftware.notekeeper.data.model.DrawerItem
-import ru.plumsoftware.notekeeper.data.model.list
+import ru.plumsoftware.notekeeper.model.DrawerItem
+import ru.plumsoftware.notekeeper.model.list
 import ru.plumsoftware.notekeeper.presentation.TestTags
 
 @Composable

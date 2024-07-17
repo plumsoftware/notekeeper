@@ -22,7 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import ru.plumsoftware.notekeeper.data.model.list
+import ru.plumsoftware.notekeeper.model.list
 import ru.plumsoftware.notekeeper.presentation.TestTags
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.LeftDrawer
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.MainScreenTopAppBar

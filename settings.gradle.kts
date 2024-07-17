@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Блокнот"
 include(":app")
+include(":data")
+include(":domain")

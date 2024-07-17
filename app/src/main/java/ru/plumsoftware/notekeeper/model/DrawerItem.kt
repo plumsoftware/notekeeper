@@ -1,4 +1,4 @@
-package ru.plumsoftware.notekeeper.data.model
+package ru.plumsoftware.notekeeper.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import ru.plumsoftware.notekeeper.R

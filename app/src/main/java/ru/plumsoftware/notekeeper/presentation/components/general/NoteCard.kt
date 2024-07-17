@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import ru.plumsoftware.data.model.Note
+import ru.plumsoftware.data.model.database.note.Note
 import ru.plumsoftware.notekeeper.presentation.theme.ExtendedTheme
 import ru.plumsoftware.notekeeper.presentation.theme.addon.ThemeAddons
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons

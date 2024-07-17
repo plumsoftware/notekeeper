@@ -1,6 +1,6 @@
 package ru.plumsoftware.notekeeper.presentation.screens.main.store
 
-import ru.plumsoftware.notekeeper.data.model.DrawerAction
+import ru.plumsoftware.notekeeper.model.DrawerAction
 
 data class State(
     val queryToSearch: String = "",

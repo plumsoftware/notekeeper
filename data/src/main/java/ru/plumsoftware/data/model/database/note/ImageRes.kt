@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ImageRes (
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val _id: Int,
     @ColumnInfo val resId: Int,
     @ColumnInfo val noteId: Int,
 )

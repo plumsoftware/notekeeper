@@ -13,51 +13,55 @@ class DatabaseRepositoryImpl(private val userDatabase: UserDatabase) : DatabaseR
     }
 
     override suspend fun getAllNoteTasks(): List<NoteTask> {
-        TODO("Not yet implemented")
+        return userDatabase.noteDao().getAllNoteTasks()
     }
 
     override suspend fun getAllImageRes(): List<ImageRes> {
-        TODO("Not yet implemented")
+        return userDatabase.noteDao().getAllImageResIds()
     }
 
     override suspend fun getAllVideoRes(): List<VideoRes> {
-        TODO("Not yet implemented")
+        return userDatabase.noteDao().getAllVideoIds()
+    }
+
+    override suspend fun gelNoteById(id: Int): Note {
+        return userDatabase.noteDao().getNoteById(id = id)
     }
 //    endregion
 
     //    region::Insert
     override suspend fun insertNewNotes(vararg newNotes: Note) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().insetNewNotes(newNotes = newNotes)
     }
 
     override suspend fun insertNewNoteTasks(vararg newNoteTasks: NoteTask) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().insetNewNoteTasks(newNoteTasks = newNoteTasks)
     }
 
     override suspend fun insertNewImageRes(vararg imageRes: ImageRes) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().insetNewImageRes(newImageRes = imageRes)
     }
 
     override suspend fun insertNewVideoRes(vararg videoRes: VideoRes) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().insetNewVideoRes(newVideoRes = videoRes)
     }
 //    endregion
 
     //    region::Delete
     override suspend fun deleteNotes(vararg notes: Note) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().deleteNotes(notes = notes)
     }
 
-    override suspend fun deleteNoteTasks(vararg noteTask: NoteTask) {
-        TODO("Not yet implemented")
+    override suspend fun deleteNoteTasks(vararg noteTasks: NoteTask) {
+        userDatabase.noteDao().deleteNoteTasks(noteTasks = noteTasks)
     }
 
     override suspend fun deleteImageRes(vararg imageRes: ImageRes) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().deleteImageRes(imageRes = imageRes)
     }
 
     override suspend fun deleteNewVideoRes(vararg videoRes: VideoRes) {
-        TODO("Not yet implemented")
+        userDatabase.noteDao().deleteVideoRes(videoRes = videoRes)
     }
 //    endregion
 }

@@ -89,7 +89,7 @@ private fun NotePreview() {
     ExtendedTheme {
         NoteCard(
             note = Note(
-                id = 0,
+                noteId = 0,
                 name = "Title",
                 content = "Desc",
                 themeId = 3,

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class NoteTask(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val noteTaskId: Int,
     @ColumnInfo val noteId: Int,
     @ColumnInfo val name: String,
     @ColumnInfo val isDone: Boolean

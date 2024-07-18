@@ -24,6 +24,18 @@ interface NoteDao {
 
     @Query("SELECT * FROM ${Database.VIDEO_RES_TABLE_NAME}")
     suspend fun getAllVideoIds(): List<VideoRes>
+
+    @Query("SELECT * FROM ${Database.NOTE_TABLE_NAME} WHERE ${Database.NOTE_ID}=:id")
+    suspend fun getNoteById(id: Int): Note
+
+    @Query("SELECT * FROM ${Database.TASKS_TABLE_NAME} WHERE ${Database.NOTE_ID}=:id")
+    suspend fun getNoteTasksByNoteId(id: Int): List<NoteTask>
+
+    @Query("SELECT * FROM ${Database.IMAGE_RES_TABLE_NAME} WHERE ${Database.NOTE_ID}=:id")
+    suspend fun getImageResByNoteId(id: Int): List<ImageRes>
+
+    @Query("SELECT * FROM ${Database.VIDEO_RES_TABLE_NAME} WHERE ${Database.NOTE_ID}=:id")
+    suspend fun getVideoResByNoteId(id: Int): List<VideoRes>
 //    endregion
 
     //    region:Insert

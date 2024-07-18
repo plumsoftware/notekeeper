@@ -11,6 +11,11 @@ interface DatabaseRepository {
     suspend fun getAllImageRes(): List<ImageRes>
     suspend fun getAllVideoRes(): List<VideoRes>
 
+    suspend fun getNoteByNoteId(id: Int) : Note
+    suspend fun getNoteTasksByNoteId(id: Int) : List<NoteTask>
+    suspend fun getImageResByNoteId(id: Int) : List<ImageRes>
+    suspend fun getVideoResByNoteId(id: Int) : List<VideoRes>
+
     suspend fun insertNewNotes(vararg newNotes: Note)
     suspend fun insertNewNoteTasks(vararg newNoteTasks: NoteTask)
     suspend fun insertNewImageRes(vararg imageRes: ImageRes)

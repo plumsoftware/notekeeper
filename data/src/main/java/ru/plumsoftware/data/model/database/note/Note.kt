@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Note(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val noteId: Int,
     @ColumnInfo val name: String,
     @ColumnInfo val content: String?,
     @ColumnInfo val themeId: Int,
@@ -16,7 +16,7 @@ data class Note(
     companion object {
         fun empty(): Note {
             return Note(
-                id = -1,
+                noteId = -1,
                 name = "",
                 content = "",
                 themeId = -1,

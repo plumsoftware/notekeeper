@@ -23,5 +23,7 @@ object ThemeAddons {
         val titleLarge = 16.sp
 
         val headlineMedium = 16.sp
+
+        val headlineLarge = 24.sp
     }
 }

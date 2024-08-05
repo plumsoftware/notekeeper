@@ -1,30 +1,38 @@
 package ru.plumsoftware.notekeeper.presentation.screens.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.Effect
 import ru.plumsoftware.notekeeper.presentation.screens.main.store.Intent
-import ru.plumsoftware.notekeeper.presentation.screens.main.store.Output
 import ru.plumsoftware.notekeeper.presentation.screens.main.store.State
 
-class MainViewModel(
-    private val output: (Output) -> Unit
-) : ViewModel() {
+class MainViewModel : ViewModel() {
 
     val state = MutableStateFlow(State())
+    val effect = MutableSharedFlow<Effect>()
 
     fun onIntent(intent: Intent) {
         when (intent) {
             Intent.AddNewNote -> {
-                onOutput(Output.AddNewNote)
+                viewModelScope.launch {
+                    effect.emit(Effect.AddNewNote)
+                }
             }
 
             is Intent.ClickNote -> {
-                onOutput(Output.ClickNote(value = intent.value))
+                viewModelScope.launch {
+                    effect.emit(Effect.ClickNote(value = intent.value))
+                }
             }
 
             Intent.ClickSettings -> {
-                onOutput(Output.ClickSettings)
+                viewModelScope.launch {
+                    effect.emit(Effect.ClickSettings)
+                }
             }
 
             is Intent.SearchClick -> {
@@ -34,10 +42,18 @@ class MainViewModel(
                     )
                 }
             }
-        }
-    }
 
-    fun onOutput(o: Output) {
-        output(o)
+            is Intent.ChangeSelectedAction -> {
+                state.update {
+                    it.copy(drawerAction = intent.value)
+                }
+            }
+
+            Intent.ToggleDrawer -> {
+                viewModelScope.launch {
+                    effect.emit(Effect.ToggleDrawer)
+                }
+            }
+        }
     }
 }

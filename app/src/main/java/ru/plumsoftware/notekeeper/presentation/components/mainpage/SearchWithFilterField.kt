@@ -32,6 +32,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import ru.plumsoftware.notekeeper.R
 import ru.plumsoftware.notekeeper.presentation.NotekeeperIconPack
 import ru.plumsoftware.notekeeper.presentation.TestTags
@@ -126,10 +127,9 @@ fun SearchWithFilterField(text: String, onSearchClick: (String) -> Unit) {
         ) {
             Text(
                 text = text,
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    color = MaterialTheme.typography.bodyLarge.color.copy(alpha = UIAddons.Alpha.searchWithFilterFieldAlpha)
-                ),
+                style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier
+                    .padding(horizontal = UIAddons.Padding.extraSmallVerPadding)
                     .weight(1f)
                     .testTag(TestTags.searchFieldOnMainScreenText)
             )

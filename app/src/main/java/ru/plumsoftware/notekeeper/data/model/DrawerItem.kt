@@ -18,7 +18,11 @@ enum class DrawerAction {
     _14_DAYS,
     _1_MONTH,
     FAVORITES,
-    BUG_REPORT
+    BUG_REPORT;
+
+    fun string(): Int {
+        return map[this]!!
+    }
 }
 
 val list = listOf(
@@ -58,4 +62,13 @@ val list = listOf(
         contentDescription = R.string.bug_report,
         drawerAction = DrawerAction.BUG_REPORT
     )
+)
+
+internal val map = mapOf(
+    DrawerAction._3_DAYS to R.string._3_days,
+    DrawerAction._7_DAYS to R.string._7_days,
+    DrawerAction._1_MONTH to R.string._1_month,
+    DrawerAction._14_DAYS to R.string._14_days,
+    DrawerAction.FAVORITES to R.string.favorites,
+    DrawerAction.BUG_REPORT to R.string.bug_report,
 )

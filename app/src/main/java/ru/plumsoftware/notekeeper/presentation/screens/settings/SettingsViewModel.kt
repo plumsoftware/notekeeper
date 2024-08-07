@@ -1,26 +1,19 @@
 package ru.plumsoftware.notekeeper.presentation.screens.settings
 
 import androidx.lifecycle.ViewModel
-import ru.plumsoftware.notekeeper.presentation.screens.settings.store.Intent
-import ru.plumsoftware.notekeeper.presentation.screens.settings.store.Output
+import ru.plumsoftware.notekeeper.presentation.screens.settings.store.SettingsScreenIntent
 
-class SettingsViewModel(
-    val output: (Output) -> Unit
-) : ViewModel() {
+class SettingsViewModel : ViewModel() {
 
-    fun onIntent(intent: Intent) {
-        when (intent) {
-            Intent.OnBackClicked -> {
+    fun onIntent(settingsScreenIntent: SettingsScreenIntent) {
+        when (settingsScreenIntent) {
+            SettingsScreenIntent.OnBackClicked -> {
 
             }
 
-            is Intent.OnThemeChanged -> {
+            is SettingsScreenIntent.OnThemeChanged -> {
 
             }
         }
-    }
-
-    fun onOutput(o: Output) {
-        output(o)
     }
 }

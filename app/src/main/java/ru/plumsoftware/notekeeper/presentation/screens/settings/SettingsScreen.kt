@@ -10,21 +10,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import ru.plumsoftware.notekeeper.R
 import ru.plumsoftware.notekeeper.presentation.components.settings.SettingsItem_Theme
 import ru.plumsoftware.notekeeper.presentation.components.settings.SettingsTopAppBar
-import ru.plumsoftware.notekeeper.presentation.screens.settings.store.Intent
-import ru.plumsoftware.notekeeper.presentation.screens.settings.store.Output
+import ru.plumsoftware.notekeeper.presentation.screens.settings.store.SettingsScreenIntent
 import ru.plumsoftware.notekeeper.presentation.theme.NotekeeperTheme
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 
 @Composable
-fun SettingsScreen(settingsViewModel: SettingsViewModel) {
+fun SettingsScreen(onIntent: (SettingsScreenIntent) -> Unit, navController: NavHostController) {
     Scaffold(
         topBar = {
             SettingsTopAppBar(
                 onBackClick = {
-                    settingsViewModel.onOutput(Output.OnBackClicked)
+                    onIntent(SettingsScreenIntent.OnBackClicked)
                 },
                 title = stringResource(id = R.string.settings_title)
             )
@@ -43,7 +44,7 @@ fun SettingsScreen(settingsViewModel: SettingsViewModel) {
         ) {
             item {
                 SettingsItem_Theme(onThemeChanged = {
-                    settingsViewModel.onIntent(Intent.OnThemeChanged(value = it))
+                    onIntent(SettingsScreenIntent.OnThemeChanged(value = it))
                 })
             }
         }
@@ -54,6 +55,7 @@ fun SettingsScreen(settingsViewModel: SettingsViewModel) {
 @Preview(showBackground = true, showSystemUi = true)
 private fun SettingsPreview() {
     NotekeeperTheme {
-        SettingsScreen(settingsViewModel = SettingsViewModel(output = {}))
+        val settingsViewModel = SettingsViewModel()
+        SettingsScreen(onIntent = settingsViewModel::onIntent, navController = rememberNavController())
     }
 }

@@ -6,52 +6,52 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import ru.plumsoftware.notekeeper.presentation.screens.main.store.Effect
-import ru.plumsoftware.notekeeper.presentation.screens.main.store.Intent
-import ru.plumsoftware.notekeeper.presentation.screens.main.store.State
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.MainScreenEffect
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.MainScreenIntent
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.MainScreenState
 
 class MainViewModel : ViewModel() {
 
-    val state = MutableStateFlow(State())
-    val effect = MutableSharedFlow<Effect>()
+    val mainScreenState = MutableStateFlow(MainScreenState())
+    val mainScreenEffect = MutableSharedFlow<MainScreenEffect>()
 
-    fun onIntent(intent: Intent) {
-        when (intent) {
-            Intent.AddNewNote -> {
+    fun onIntent(mainScreenIntent: MainScreenIntent) {
+        when (mainScreenIntent) {
+            MainScreenIntent.AddNewNote -> {
                 viewModelScope.launch {
-                    effect.emit(Effect.AddNewNote)
+                    mainScreenEffect.emit(MainScreenEffect.AddNewNote)
                 }
             }
 
-            is Intent.ClickNote -> {
+            is MainScreenIntent.ClickNote -> {
                 viewModelScope.launch {
-                    effect.emit(Effect.ClickNote(value = intent.value))
+                    mainScreenEffect.emit(MainScreenEffect.ClickNote(value = mainScreenIntent.value))
                 }
             }
 
-            Intent.ClickSettings -> {
+            MainScreenIntent.ClickSettings -> {
                 viewModelScope.launch {
-                    effect.emit(Effect.ClickSettings)
+                    mainScreenEffect.emit(MainScreenEffect.ClickSettings)
                 }
             }
 
-            is Intent.SearchClick -> {
-                state.update {
+            is MainScreenIntent.SearchClick -> {
+                mainScreenState.update {
                     it.copy(
-                        queryToSearch = intent.value
+                        queryToSearch = mainScreenIntent.value
                     )
                 }
             }
 
-            is Intent.ChangeSelectedAction -> {
-                state.update {
-                    it.copy(drawerAction = intent.value)
+            is MainScreenIntent.ChangeSelectedAction -> {
+                mainScreenState.update {
+                    it.copy(drawerAction = mainScreenIntent.value)
                 }
             }
 
-            Intent.ToggleDrawer -> {
+            MainScreenIntent.ToggleDrawer -> {
                 viewModelScope.launch {
-                    effect.emit(Effect.ToggleDrawer)
+                    mainScreenEffect.emit(MainScreenEffect.ToggleDrawer)
                 }
             }
         }

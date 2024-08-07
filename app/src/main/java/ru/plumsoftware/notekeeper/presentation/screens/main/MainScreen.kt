@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Divider
@@ -21,49 +20,53 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.flow.collect
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.flow.MutableSharedFlow
 import ru.plumsoftware.notekeeper.R
+import ru.plumsoftware.notekeeper.Routing
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.MainScreenTopAppBar
 import ru.plumsoftware.notekeeper.presentation.components.mainpage.SearchWithFilterField
-import ru.plumsoftware.notekeeper.presentation.screens.main.store.Effect
-import ru.plumsoftware.notekeeper.presentation.screens.main.store.Intent
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.MainScreenEffect
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.MainScreenIntent
+import ru.plumsoftware.notekeeper.presentation.screens.main.store.MainScreenState
 import ru.plumsoftware.notekeeper.presentation.theme.NotekeeperTheme
 import ru.plumsoftware.notekeeper.presentation.theme.addon.UIAddons
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen(mainViewModel: MainViewModel) {
-    val state = mainViewModel.state.collectAsState().value
+fun MainScreen(
+    onIntent: (MainScreenIntent) -> Unit,
+    mainScreenState: State<MainScreenState>,
+    mainScreenEffect: MutableSharedFlow<MainScreenEffect>,
+    navController: NavHostController
+) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
     LaunchedEffect(key1 = Unit) {
-        mainViewModel.effect.collect { effect ->
+        mainScreenEffect.collect { effect ->
             when (effect) {
-                Effect.AddNewNote -> {
+                MainScreenEffect.AddNewNote -> {
 
                 }
 
-                is Effect.ClickNote -> {
+                is MainScreenEffect.ClickNote -> {
 
                 }
 
-                Effect.ClickSettings -> {
-
+                MainScreenEffect.ClickSettings -> {
+                    navController.navigate(route = Routing.SETTINGS_SCREEN)
                 }
 
-                Effect.ToggleDrawer -> {
+                MainScreenEffect.ToggleDrawer -> {
                     drawerState.apply {
-                        if (isClosed) open() else close()
+                        if (isOpen) close() else open()
                     }
                 }
             }
@@ -84,7 +87,7 @@ fun MainScreen(mainViewModel: MainViewModel) {
                 )
                 Divider()
 
-                state.drawerList.forEach {
+                mainScreenState.value.drawerList.forEach {
                     NavigationDrawerItem(
                         label = {
                             Row(
@@ -107,9 +110,9 @@ fun MainScreen(mainViewModel: MainViewModel) {
                                 )
                             }
                         },
-                        selected = state.drawerAction == it.drawerAction,
+                        selected = mainScreenState.value.drawerAction == it.drawerAction,
                         onClick = {
-                            mainViewModel.onIntent(Intent.ChangeSelectedAction(value = it.drawerAction))
+                            onIntent(MainScreenIntent.ChangeSelectedAction(value = it.drawerAction))
                         }
                     )
                 }
@@ -131,14 +134,16 @@ fun MainScreen(mainViewModel: MainViewModel) {
                 ) {
                     MainScreenTopAppBar(
                         onDrawerClick = {
-                            mainViewModel.onIntent(Intent.ToggleDrawer)
+                            onIntent(MainScreenIntent.ToggleDrawer)
                         },
-                        onSettingsClick = {}
+                        onSettingsClick = {
+                            onIntent(MainScreenIntent.ClickSettings)
+                        }
                     )
                     SearchWithFilterField(
-                        text = stringResource(id = state.drawerAction.string()),
+                        text = stringResource(id = mainScreenState.value.drawerAction.string()),
                         onSearchClick = {
-                            mainViewModel.onIntent(Intent.SearchClick(value = it))
+                            onIntent(MainScreenIntent.SearchClick(value = it))
                         }
                     )
                 }
@@ -153,8 +158,12 @@ fun MainScreen(mainViewModel: MainViewModel) {
 @Preview(showBackground = true, showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun MainScreenDarkPreview() {
     NotekeeperTheme {
+        val mainViewModel = MainViewModel()
         MainScreen(
-            mainViewModel = MainViewModel()
+            mainViewModel::onIntent,
+            mainViewModel.mainScreenState.collectAsState(),
+            mainViewModel.mainScreenEffect,
+            navController = rememberNavController()
         )
     }
 }

@@ -120,6 +120,7 @@ fun MainScreen(
         },
     ) {
         Scaffold(
+            containerColor = MaterialTheme.colorScheme.background,
             topBar = {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(
@@ -157,7 +158,7 @@ fun MainScreen(
 @Composable
 @Preview(showBackground = true, showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun MainScreenDarkPreview() {
-    NotekeeperTheme {
+    NotekeeperTheme(darkTheme = true) {
         val mainViewModel = MainViewModel()
         MainScreen(
             mainViewModel::onIntent,

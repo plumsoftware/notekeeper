@@ -76,7 +76,10 @@ fun MainScreen(mainViewModel: MainViewModel) {
             ModalDrawerSheet {
                 Text(
                     text = stringResource(id = R.string.app_name),
-                    modifier = Modifier.padding(UIAddons.Padding.mediumHorPadding),
+                    modifier = Modifier.padding(
+                        UIAddons.Padding.mediumHorPadding,
+                        UIAddons.Padding.mediumVerPadding
+                    ),
                     style = MaterialTheme.typography.headlineLarge
                 )
                 Divider()
@@ -120,7 +123,11 @@ fun MainScreen(mainViewModel: MainViewModel) {
                         space = UIAddons.Space.mediumSpace,
                         alignment = Alignment.Top
                     ),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(
+                        UIAddons.Padding.mediumHorPadding,
+                        UIAddons.Padding.mediumVerPadding
+                    )
                 ) {
                     MainScreenTopAppBar(
                         onDrawerClick = {
